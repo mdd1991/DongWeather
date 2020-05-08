@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DongWeather</string>
+    <string name="search_place_edit">输入地址</string>
 </resources>
