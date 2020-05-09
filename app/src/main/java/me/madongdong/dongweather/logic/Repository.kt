@@ -5,6 +5,7 @@ import kotlinx.coroutines.Dispatchers
 import me.madongdong.dongweather.logic.model.Place
 import me.madongdong.dongweather.logic.network.DongWeatherNetwork
 
+
 /**
  * @author Donny
  * @date 2020/5/8
@@ -16,15 +17,15 @@ object Repository {
 
     fun searchPlaces(query: String) = liveData(Dispatchers.IO) {
         val result = try {
-            val placesResponse = DongWeatherNetwork.searchPlaces(query)
-            if (placesResponse.status == "ok") {
-                val places = placesResponse.places
+            val placeResponse = DongWeatherNetwork.searchPlaces(query)
+            if (placeResponse.status == "ok") {
+                val places = placeResponse.places
                 Result.success(places)
             } else {
-                Result.failure(RuntimeException("response status is ${placesResponse.status}"))
+                Result.failure(RuntimeException("response status is ${placeResponse.status}"))
             }
         } catch (e: Exception) {
-            Result.failure<List<Place>>(e)
+            Result.failure(e)
         }
         emit(result as Result<List<Place>>)
     }
