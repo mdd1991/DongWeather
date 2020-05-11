@@ -3,7 +3,6 @@ package me.madongdong.dongweather.logic.network
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.await
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
@@ -16,6 +15,14 @@ import kotlin.coroutines.suspendCoroutine
  * description：单例类，统一的网络数据源访问入口，对所有网络请求的API进行封装
  */
 object DongWeatherNetwork {
+
+    private val weatherService = ServiceCreator.create(WeatherService::class.java)
+
+    suspend fun getDailyWeather(lng: String, lat: String) =
+        weatherService.getDailyWeather(lng, lat).await()
+
+    suspend fun getRealtimeWeather(lng: String, lat: String) =
+        weatherService.getRealtimeWeather(lng, lat).await()
 
     private val placeService = ServiceCreator.create(PlaceService::class.java)
 

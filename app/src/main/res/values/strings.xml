@@ -1,4 +1,10 @@
 <resources>
-    <string name="app_name">DongWeather</string>
+    <string name="app_name">阿东天气</string>
     <string name="search_place_edit">输入地址</string>
+    <string name="forecast_text">预报</string>
+    <string name="life_index">生活指数</string>
+    <string name="life_index_cold_risk">感冒</string>
+    <string name="dressing">穿衣</string>
+    <string name="ultraviolet">实时紫外线</string>
+    <string name="car_washing">洗车</string>
 </resources>
